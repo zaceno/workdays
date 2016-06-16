@@ -1,0 +1,16 @@
+{
+  "name": "workdays",
+  "version": "1.0.0",
+  "description": "Helps you do calendar math for just work days",
+  "main": "workdays.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha *.spec.js"
+  },
+  "author": "Zacharias Enochsson",
+  "license": "ISC",
+  "private": true
+}
