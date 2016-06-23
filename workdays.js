@@ -2,7 +2,7 @@
 
 var WorkDays = function (oDate, offDates) {
 
-  offDates = offDates || [];
+  offDates = offDates || [];
   oDate = oDate || new Date();
   if (!(oDate instanceof Date)) oDate = new Date(oDate);
 
@@ -42,7 +42,7 @@ var WorkDays = function (oDate, offDates) {
   };
 
   this.getDays = function (d) {
-    d = d || new Date();
+    d = d || new Date();
     if (!(d instanceof Date)) d = new Date(d);
 
     var d1 = startOnWorkDay(oDate),
