@@ -1,10 +1,13 @@
-
-
+var normDate = function (d) {
+    if (!(d instanceof Date)) return normDate(new Date(d))
+    d.setHours(12)
+    return d
+}
+  
 var WorkDays = function (oDate, offDates) {
-
+  
   offDates = offDates || [];
-  oDate = oDate || new Date();
-  if (!(oDate instanceof Date)) oDate = new Date(oDate);
+  oDate = normDate(oDate || new Date());
 
   var nextOn = function (d, n) {
         d.setDate(d.getDate() + n);
@@ -17,11 +20,12 @@ var WorkDays = function (oDate, offDates) {
         return toString(d1) === toString(d2);
       },
       isOff = function (d) {
-        return (
+        var off = (
           d.getDay() === 0 ||
           d.getDay() === 6 ||
           offDates.indexOf(toString(d)) > -1
         );
+        return off
       },
       startOnWorkDay = function (d) {
         d = new Date(d.getTime());
@@ -42,19 +46,15 @@ var WorkDays = function (oDate, offDates) {
   };
 
   this.getDays = function (d) {
-    d = d || new Date();
-    if (!(d instanceof Date)) d = new Date(d);
-
+    d = normDate(d || new Date());
     var d1 = startOnWorkDay(oDate),
         d2 = startOnWorkDay(d),
         c = 0,
         i = (d1 < d2) ? 1 : -1;
-
     while(!sameDate(d1, d2)) {
       c += i;
       d1 = nextOn(d1, i);
     };
-
     return c;
   };
 };
